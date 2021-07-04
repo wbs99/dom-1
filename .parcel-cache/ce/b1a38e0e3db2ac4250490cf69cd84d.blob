@@ -1,0 +1,7 @@
+window.dom = {
+    create (string) {
+        const container = document.createElement('template');
+        container.innerHTML = string.trim(); //trim 可以去掉字符串两边的空格
+        return container.content.firstChild;
+    }
+};

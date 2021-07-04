@@ -1,0 +1,2 @@
+const b = dom.create('<div><span>1</span></div>');
+console.log(b);

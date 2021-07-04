@@ -1,0 +1,38 @@
+window.dom = {
+    create (string) {
+        const container = document.createElement('template');
+        container.innerHTML = string.trim(); //trim 可以去掉字符串两边的空格
+        return container.content.firstChild;
+    },
+    after (node, node2) {
+        //找到这个节点的爸爸，调用爸爸的 insertBefore ,把 node2 插到 node 的下一个节点的前面
+        node.parentNode.insertBefore(node2, node.nextSibling);
+    },
+    before (node, node2) {
+        node.parentNode.insertBefore(node2, node);
+    },
+    append (parent, node) {
+        parent.appendChild(node);
+    },
+    wrap (node, parent) {
+        dom.before(node, parent);
+        dom.append(parent, node);
+    },
+    remove (node) {
+        //找到节点的爸爸删掉爸爸的儿子
+        node.parentNode.removeChild(node);
+        return node;
+    },
+    empty (node) {
+        const array = [];
+        let x = node.firstChild;
+        while(x){
+            array.push(dom.remove(node.firstChild));
+            x = node.firstChild; //这里的 firstChild 就是原来的 secondChild
+        }
+        return array;
+    },
+    attr (node, name, value) {
+        node.attribute;
+    }
+};
